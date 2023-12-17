@@ -38,7 +38,7 @@ public class Fleury {
             Integer b = this.edges[a].get(i);
             if (isValidPath(a, b)) {
                 removeEdge(a, b);
-                System.out.println(" " + ((a < 10) ? " " + a : a) + " - " + b);
+                System.out.println(" " + ((a < 10) ? " " + (a + 1) : (a + 1)) + " - " + (b + 1));
                 walk(b);
             }
         }
