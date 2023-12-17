@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class IndependentSet {
-
     private int numberOfVertices;
     private ArrayList<Integer>[] edges;
 
+    @SuppressWarnings("unchecked")
     IndependentSet(int numberOfVertices) {
         this.numberOfVertices = numberOfVertices;
         this.edges = new ArrayList[this.numberOfVertices];
@@ -39,7 +39,7 @@ public class IndependentSet {
                     }
                 }
             }
-            aux += (index+1)+ " ";
+            aux += (index + 1) + " ";
             for (int i = 0; i < this.edges[index].size(); i++) {
                 int idx = this.edges[index].get(i);
                 if (this.edges[idx] != null) {
@@ -55,6 +55,7 @@ public class IndependentSet {
 
     public static void main(String args[]) {
         IndependentSet graph = new IndependentSet(16);
+
         graph.addEdge(0, 1);
         graph.addEdge(0, 6);
         graph.addEdge(0, 10);
@@ -95,6 +96,7 @@ public class IndependentSet {
         graph.addEdge(11, 14);
         graph.addEdge(11, 13);
         graph.addEdge(12, 14);
+
         graph.getIndependentSet();
     }
 
