@@ -8,20 +8,20 @@ class Dijkstra {
     Dijkstra(int numberOfVertices) {
         this.numberOfVertices = numberOfVertices;
         this.edges = new ArrayList[numberOfVertices];
-        for (int i = 0; i < numberOfVertices; ++i)
+        for (int i = 0; i < numberOfVertices; i++)
             this.edges[i] = new ArrayList<>();
     }
 
-    class EgdeWeight implements Comparable<EgdeWeight> {
+    class EdgeWeight implements Comparable<EdgeWeight> {
         private int vertice;
         private int weight;
 
-        EgdeWeight(int vertice, int weight) {
+        EdgeWeight(int vertice, int weight) {
             this.vertice = vertice;
             this.weight = weight;
         }
 
-        public int compareTo(EgdeWeight other) {
+        public int compareTo(EdgeWeight other) {
             return Integer.compare(this.weight, other.weight);
         }
     }
@@ -32,7 +32,7 @@ class Dijkstra {
     }
 
     public void shortestPath(int from, int to) {
-        PriorityQueue<EgdeWeight> listEdges = new PriorityQueue<>();
+        PriorityQueue<EdgeWeight> listEdges = new PriorityQueue<>();
 
         int[][] distance = new int[numberOfVertices][2];
 
@@ -42,7 +42,7 @@ class Dijkstra {
             }
         }
 
-        listEdges.add(new EgdeWeight(from, 0));
+        listEdges.add(new EdgeWeight(from, 0));
         distance[from][0] = 0;
         distance[from][1] = 0;
 
@@ -56,7 +56,7 @@ class Dijkstra {
                 if (distance[b][0] > distance[a][0] + weight) {
                     distance[b][0] = distance[a][0] + weight;
                     distance[b][1] = a;
-                    listEdges.add(new EgdeWeight(b, distance[b][0]));
+                    listEdges.add(new EdgeWeight(b, distance[b][0]));
                 }
             }
         }
